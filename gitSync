@@ -1,6 +1,14 @@
 #/bin/sh
 
+UPDATE_YARN=false
 BRANCH=$1
+
+for arg in "$@"
+do
+  if [ "$arg" = "-f" ]; then
+    UPDATE_YARN=true
+  fi
+done
 
 if [ ! -z "$BRANCH" ]; then
   git checkout $BRANCH;
@@ -12,3 +20,7 @@ for branch in $(git branch -vv | grep ': gone]' | awk '{print $1}');
 do 
   git branch -D $branch; 
 done
+
+if [ "$UPDATE_YARN" = true ]; then
+  yarn -f
+fi
