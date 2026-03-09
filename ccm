@@ -1,0 +1,37 @@
+#!/bin/bash
+
+commit_message=$(git diff --cached | claude --model "claude-haiku-4-5" --no-session-persistence --setting-sources "" --strict-mcp-config --disable-slash-commands --tools "" -p "IMPORTANT: Output ONLY the commit message. Do NOT include any preamble, explanation, or conversational text like 'Let me analyze' or 'Here is'. Start directly with the commit type.
+
+Generate a git commit message using the Conventional Commits format:
+
+RULES:
+1. Use the correct commit type (feat, fix, chore, docs, style, refactor, test, etc.)
+2. Include scope in parentheses when relevant
+3. Write a clear, concise subject line (max 90 characters) starting with a LOWERCASE letter. NEVER start the subject with an uppercase letter. Example: 'fix(auth): add token refresh' NOT 'fix(auth): Add token refresh'
+4. Add a body with bullet points describing the changes (each line max 90 characters)
+5. Use hyphens (-) for bullet points
+6. Break long lines at word boundaries to stay within 90 character limit
+7. Focus only on the technical changes, no metadata or attribution
+8. CRITICAL: When referencing function names, variables, file names, or any code identifiers in the commit message, wrap them in single quotes ('...'). NEVER use double quotes or backticks anywhere in the output. Only single quotes are allowed for quoting. Double quotes and backticks break shell scripts.
+
+OUTPUT FORMAT (start your response directly with this, no other text):
+type(scope): lowercase subject line (MUST start with lowercase letter)
+
+- First change description
+- Second change description
+- Third change description
+
+DO NOT INCLUDE:
+- Any preamble or conversational text before the commit message
+- 'Let me analyze' or similar phrases
+- Generated with Claude comments
+- Co-authored-by lines
+- Double quotes (\") anywhere in the message - use single quotes (') only
+- Backticks of any kind (single or triple) - use single quotes instead
+- git commit -m commands
+- Any metadata or attribution
+- Uppercase first letter in the subject (e.g. 'Add', 'Fix', 'Update' - use 'add', 'fix', 'update' instead)
+
+Your first line must be the commit type(scope).")
+
+echo "$commit_message"

@@ -1,25 +1,27 @@
 #!/bin/sh
 
+gh pr create -f -a "@me" --label "🚀 automerge" --reviewer "matheusAle" --reviewer "viniciusschuelter"
+
 FRONTEND_TEAM="matheusAle, Tadeuvelloso, viniciusschuelter, xpagliosa"
 BACKEND_TEAM="matheusAle, MozartSoares, viniciusschuelter"
 
-if [ -z "$1" ]; then
-  echo "Uso: ghpr [f|front|frontend|b|back|backend]"
-  exit 1
-fi
+#if [ -z "$1" ]; then
+#  echo "Uso: ghpr [f|front|frontend|b|back|backend]"
+#  exit 1
+#fi
 
-case "$1" in
-  f|front|frontend)
-    echo "Criando PR para o time Frontend..."
-    gh pr create -f -a "@me" --label "🚀 automerge" --reviewer "matheusAle" --reviewer "Tadeuvelloso" --reviewer "viniciusschuelter" --reviewer "xpagliosa"
-    ;;
-  b|back|backend)
-    echo "Criando PR para o time Backend..."
-    gh pr create -f -a "@me" --label "🚀 automerge" --reviewer "matheusAle" --reviewer "MozartSoares" --reviewer "viniciusschuelter"
-    ;;
-  *)
-    echo "Argumento inválido: $1"
-    echo "Use: f|front|frontend para Frontend ou b|back|backend para Backend"
-    exit 1
-    ;;
-esac
+#case "$1" in
+#  f|front|frontend)
+#    echo "Criando PR para o time Frontend..."
+#    gh pr create -f -a "@me" --label "🚀 automerge" --reviewer "matheusAle" --reviewer "Tadeuvelloso" --reviewer "viniciusschuelter" --reviewer "xpagliosa"
+#    ;;
+#  b|back|backend)
+#    echo "Criando PR para o time Backend..."
+#    gh pr create -f -a "@me" --label "🚀 automerge" --reviewer "matheusAle" --reviewer "MozartSoares" --reviewer "viniciusschuelter"
+#    ;;
+#  *)
+#    echo "Argumento inválido: $1"
+#    echo "Use: f|front|frontend para Frontend ou b|back|backend para Backend"
+#    exit 1
+#    ;;
+#esac
